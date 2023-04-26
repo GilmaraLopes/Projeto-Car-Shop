@@ -14,6 +14,18 @@ class CarsService {
     const createdCar = await this.model.create(car);
     return this.createCarDomain(createdCar);
   }
+
+  public async getAll(): Promise<(Car | null)[]> {
+    const getCar = await this.model.getAll();
+    const result = getCar.map((el) => this.createCarDomain(el));
+    return result;
+  }
+
+  public async getById(id: string) {
+    const carById = await this.model.getById(id);
+    // console.log(carById);
+    return carById;
+  }
 }
 
 export default CarsService;
