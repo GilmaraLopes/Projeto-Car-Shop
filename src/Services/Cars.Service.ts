@@ -23,8 +23,12 @@ class CarsService {
 
   public async getById(id: string) {
     const carById = await this.model.getById(id);
-    // console.log(carById);
     return carById;
+  }
+
+  public async update(id: string, car: ICar) {
+    const carUpdate = await this.model.update(id, car);
+    return carUpdate;
   }
 }
 

@@ -31,5 +31,10 @@ class CarsModel {
     const result = await this.model.findById(id);
     return result;
   }
+
+  public async update(id: string, car: ICar) {
+    const result = await this.model.findByIdAndUpdate(id, car);
+    return result;
+  }
 }
 export default CarsModel;
