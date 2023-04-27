@@ -1,5 +1,5 @@
 import IMotorcycle from '../Interfaces/IMotorcycle';
-import Vehicle from './IVehicle';
+import Vehicle from './Vehicle';
 
 class Motorcycle extends Vehicle {
   private category: string;
@@ -12,4 +12,4 @@ class Motorcycle extends Vehicle {
   }
 }
 
-export default { Motorcycle };
+export default Motorcycle;

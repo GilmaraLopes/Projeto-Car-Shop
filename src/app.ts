@@ -7,6 +7,6 @@ const app = express();
 app.use(express.json());
 
 app.use('/cars', carsRoutes);
-app.use('/motocycles', motorcyclesRoutes);
+app.use('/motorcycles', motorcyclesRoutes);
 
 export default app;

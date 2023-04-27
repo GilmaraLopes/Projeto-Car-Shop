@@ -1,6 +1,6 @@
 import ICar from '../Interfaces/ICar';
 import Car from '../Domains/Car';
-import CarsModel from '../Models/Cars.Model';
+import CarsModel from '../Models/CarsModel';
 
 class CarsService {
   private model = new CarsModel();
