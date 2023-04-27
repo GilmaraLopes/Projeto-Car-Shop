@@ -1,21 +1,19 @@
-// tests/unit/services/keyRegister.test.ts
-
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
 import CarsService from '../../../src/Services/Cars.Service';
 
+const input = {
+  model: 'Marea',
+  year: 2002,
+  color: 'Black',
+  status: true,
+  buyValue: 15.990,
+  doorsQty: 4,
+  seatsQty: 5,
+};
 describe('Testes da rota Cars', function () {
   it('Adiciona um novo carro', async function () {
-    const input = {
-      model: 'Marea',
-      year: 2002,
-      color: 'Black',
-      status: true,
-      buyValue: 15.990,
-      doorsQty: 4,
-      seatsQty: 5,
-    };
     const output = {
       id: '64497fb073ff005b5c3068ff',
       model: 'Marea',
@@ -37,19 +35,35 @@ describe('Testes da rota Cars', function () {
 
   it('Lista todos os carros', async function () {
     // Arrange
+    sinon.stub(Model, 'find').resolves([{ id: '644ac8ea473538f575f2c55c', ...input }]);
+
     // Act
+    const service = new CarsService();
+    const result = await service.getAll();
     // Assert
+    expect(result).to.be.deep.equal([{ id: '644ac8ea473538f575f2c55c', ...input }]);
   });
 
-  it('Lista os carros pelo Id', async function () {
-    // Arrange
-    // Act
-    // Assert
+  it('Retorna uma mensagem de erro se o Id for inválido', async function () {
+    const message = { message: 'Invalid mongo id' };
+    sinon.stub(Model, 'findById').resolves(message);
+    
+    const service = new CarsService();
+    const result = await service.getById('644ac8ea4735');
+
+    expect(result).to.be.deep.equal(message);
   });
 
-  it('Retorna o status 404 se o Id não existir', async function () {
-    // Arrange
-    // Act
-    // Assert
+  it('Retorna uma mensagem de erro se o Id não existir', async function () {
+    const message = { message: 'Car not found' };
+    sinon.stub(Model, 'findById').resolves(message);
+
+    const service = new CarsService();
+    const result = await service.getById('644ac8ea473538f575f2c55b');
+
+    expect(result).to.be.deep.equal(message);
+  });
+  afterEach(function () {
+    sinon.restore();
   });
 });
