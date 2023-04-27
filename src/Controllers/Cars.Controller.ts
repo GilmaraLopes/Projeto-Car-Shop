@@ -36,7 +36,6 @@ class CarsController {
   public async getAll() {
     try {
       const getCar = await this.service.getAll();
-      // console.log(getCar, 'controller');
       return this.res.status(200).json(getCar);
     } catch (error) {
       this.next(error);

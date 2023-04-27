@@ -15,9 +15,5 @@ class MotorcyclesModel extends AbstractODM<IMotorcycle> {
     });
     super(schema, 'Motorcycle');
   }
-
-  // public async create(moto: IMotorcycle): Promise<IMotorcycle> {
-  //   return this.model.create({ ...moto });
-  // }
 }
 export default MotorcyclesModel;

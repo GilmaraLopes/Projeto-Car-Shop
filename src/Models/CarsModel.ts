@@ -20,15 +20,15 @@ class CarsModel extends AbstractODM<ICar> {
   //   return this.model.create({ ...car });
   // }
 
-  public async getAll(): Promise<ICar[]> {
-    const result = await this.model.find();    
-    return result;
-  }
+  // public async getAll(): Promise<ICar[]> {
+  //   const result = await this.model.find();    
+  //   return result;
+  // }
 
-  public async getById(id: string): Promise<ICar | null> {
-    const result = await this.model.findById(id);
-    return result;
-  }
+  // public async getById(id: string): Promise<ICar | null> {
+  //   const result = await this.model.findById(id);
+  //   return result;
+  // }
 
   public async update(id: string, car: ICar) {
     const result = await this.model.findByIdAndUpdate(id, car);

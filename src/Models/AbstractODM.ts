@@ -15,5 +15,15 @@ abstract class AbstractODM<T> {
     const createdVehicle = await this.model.create({ ...schema });
     return createdVehicle;
   }
+
+  public async getAll(): Promise<T[]> {
+    const result = await this.model.find();
+    return result;
+  }
+
+  public async getById(id: string): Promise<T | null> {
+    const result = await this.model.findById(id);
+    return result;
+  }
 }
 export default AbstractODM;

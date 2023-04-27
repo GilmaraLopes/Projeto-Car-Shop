@@ -25,6 +25,35 @@ class MotorcycleController {
       this.next(error);
     }
   }
+  public async getAll() {
+    try {
+      const getMoto = await this.service.getAll();
+      return this.res.status(200).json(getMoto);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+  public async getById() {
+    const { id } = this.req.params;
+    try {
+      const result = await this.service.getById(id);
+      if (!result) {
+        return this.res.status(404).json({ message: 'Motorcycle not found' });
+      }
+      return this.res.status(200).json({
+        id: result.id,
+        model: result.model,
+        year: result.year,
+        color: result.color,
+        status: result.status,
+        buyValue: result.buyValue,
+        category: result.category,
+        engineCapacity: result.engineCapacity,
+      });
+    } catch (error) {
+      return this.res.status(422).json({ message: 'Invalid mongo id' });
+    }
+  }
 }
 
 export default MotorcycleController;
