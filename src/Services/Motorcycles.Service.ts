@@ -26,6 +26,11 @@ class MotorcyclesService {
     const motoById = await this.model.getById(id);
     return motoById;
   }
+
+  public async update(id: string, moto: IMotorcycle) {
+    const carUpdate = await this.model.update(id, moto);
+    return carUpdate;
+  }
 }
 
 export default MotorcyclesService;

@@ -25,5 +25,10 @@ abstract class AbstractODM<T> {
     const result = await this.model.findById(id);
     return result;
   }
+
+  public async update(id: string, schema: IVehicle) {
+    const result = await this.model.findByIdAndUpdate(id, { ...schema });
+    return result;
+  }
 }
 export default AbstractODM;
