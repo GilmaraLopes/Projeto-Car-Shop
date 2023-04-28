@@ -22,7 +22,7 @@ Vão ser necessárias para realização do projeto
  6. Escreva testes para cobrir 60% da camada de Service
  7. Crie a rota /motorcycles onde seja possível listar motos
 ## Requisitos bônus
- 8 Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
+ 8. Crie a rota /motorcycles/:id onde seja possível atualizar uma moto por ID
  9. Escreva testes para cobrir 80% da camada de Service
  
 ## Instruções
